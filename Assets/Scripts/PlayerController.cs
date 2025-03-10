@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
+    public float runSpeed;
     private Vector2 curMovementInput;
     public float jumpPower;
     public LayerMask groundLayerMask;
@@ -72,6 +73,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnRunInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)  // 버튼이 눌리고 있을 때
+        {
+            moveSpeed += runSpeed;
+        }
+        else if (context.phase == InputActionPhase.Canceled)  // 버튼을 떼었을 때
+        {
+            moveSpeed = 6;
+        }
+    }
     private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
