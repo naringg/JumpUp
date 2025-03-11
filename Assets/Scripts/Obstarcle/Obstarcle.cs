@@ -7,10 +7,13 @@ public class Obstacle : MonoBehaviour
     public float damageRate = 1f;
     public float knockbackForce = 5f; // ³Ë¹é Èû Á¶Àý
     private List<IDamagable> things = new List<IDamagable>();
+    public AudioClip DamageSound;   // Á¡ÇÁ È¿°úÀ½
+    private AudioSource audioSource;
 
     private void Start()
     {
         InvokeRepeating("DealDamage", 0, damageRate);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void DealDamage()
@@ -27,6 +30,10 @@ public class Obstacle : MonoBehaviour
         if (other.TryGetComponent(out IDamagable damagable))
         {
             things.Add(damagable);
+            if (DamageSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(DamageSound);
+            }
         }
     }
 
