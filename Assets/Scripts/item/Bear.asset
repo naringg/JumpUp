@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bear
   m_EditorClassIdentifier: 
   displayName: Bear
-  description: Big Bear
+  description: Bear attack you!don't go near
   type: 0
   icon: {fileID: 21300000, guid: 6054318fc678eef4e97655493b73c580, type: 3}
   dropPrefab: {fileID: 0}
